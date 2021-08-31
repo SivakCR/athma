@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-TZ5KTX927T"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+      
+        gtag('config', 'G-TZ5KTX927T');
+      </script>
+      <!-- Metas -->
+      <meta charset="utf-8">
+      <title>Quotes - Athmakalin sangamam</title>
+      <meta name="description" content="">
+      <meta name="author" content="Codestormx">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!-- Css -->
+      <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+      <link href="css/main.css" rel="stylesheet" type="text/css" media="all" />
+      <link href="css/venobox.css" rel="stylesheet" type="text/css" media="all" />
+      <link href="css/fonts.css" rel="stylesheet" type="text/css" media="all" />
+      <link href="css/owl-carousel/owl.carousel.css" rel="stylesheet"  media="all"/>
+      <link href="css/owl-carousel/owl.theme.css" rel="stylesheet"  media="all" />
+      <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,700" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700" rel="stylesheet">
+
+      <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+   </head>
+   <body>
+      <div class="loader">
+         <div class="loader-inner">
+            <div class="bounce">
+  <div class="bounce-one"></div>
+  <div class="bounce-two"></div>
+</div>
+         </div>
+      </div>
+      <div id="wrapper" class="wrapper">
+         <header class="header default">
+            <div class="header-section">
+               <div class="container-fluid ">
+                  <nav class="navbar navbar-expand-lg header-navbar ml-0 ml-lg-5">
+                     <a class=" navbar-brand navbar-logo scroll" href="/">
+                     <img class="mb-0 logo-light" src="assets/img/Logo.png" height="100%" width="100%" alt="Logo">
+                     <img class="mb-0 logo-dark" src="assets/img/Logo.png" height="100%" width="100%" alt="Logo">
+                     </a>
+                     <button class="navbar-toggler btn-navbar-toggler" type="button" data-toggle="collapse" data-target=".nav-menu" aria-expanded="true" aria-label="Toggle navigation">
+                     <span class="fa fa-bars"></span>
+                     </button>
+                     <div class="nav-menu collapse navbar-collapse navbar-collapse justify-content-end mr-5 ">
+                        <ul itemscope itemtype="http://www.schema.org/SiteNavigationElement" class=" navbar-nav  header-navbar-nav">
+                           <li itemprop="name"><a itemprop="url" class=" nav-link scroll" href="/">Home</a></li>
+                           <li itemprop="name"><a itemprop="url" class=" nav-link scroll" href="/history">About</a></li>
+                           <li itemprop="name"><a itemprop="url" class=" nav-link" href="/#services">class</a></li>
+                           <li itemprop="name"><a itemprop="url" class=" nav-link scroll" href="/gallery">Gallery</a></li>
+                           <li itemprop="name"><a itemprop="url" class=" nav-link scroll" href="/media">Media</a></li>
+                           <li itemprop="name"><a itemprop="url" class=" nav-link scroll" href="/blogs-ln=English">Articles</a></li>
+                           <li itemprop="name"><a itemprop="url" class="nav-link scroll mb-3 mb-lg-0" href="/quotes">Quotes</a></li>
+                        </ul>
+                     </div>
+                  </nav>
+               </div>
+            </div>
+         </header>
+         
+         <section style="background-color: rgba(72, 77, 77, 0.315);" id="gallery">
+            <div class="container spacer-double-lg border-bottom">
+               <div class="row">
+                  <div class="col">
+                     <div class="mb-0 pb-0 text-center">
+                        <span class="text-uppercase text-secondary font-secondary font-size-12">Just Be</span>       
+                        <h1 class="mb-0">Quotes</h1>
+                        <img class=" max-width-4" src="assets/svg/title-line.svg" alt="">
+                        <p class=" mb-0 pt-3 lead w-md-60 mx-auto">Scarcest and most renouned words from the life of enlightened masters and other life changing gurus </p>
+                     </div>
+                  </div>
+               </div>
+
+                    
+            </div>
+         </section>
+         <section>
+            <div class="container mt-5">
+               <div id="gallery-row" class="row gap">
+                  <% for(var i=0; i < data.length; i++) { %>
+                     <div class="col-md-4 col-md  mb-2">
+                        <a class="venobox hover-effect d-block vbox-item" data-overlay="rgba(52,58,64,.6)" href="<%= data[i].image %>">
+                           <span class="hover-effect-container">
+                              <span class="hover-effect-icon ">
+                                 <span class=" fas fa-eye top-icon "></span>
+                              </span>
+                           </span>
+                           <div style="background-image:url('<%= data[i].image %>');" class="gall gall-bg-img gall-<%= i %>">
+                           </div>
+                        </a>
+                     </div>
+                  <% } %>
+               </div>
+            </div>
+         </section>
+         <div class="text-center p-3 m-2">
+            <button onclick="more()" id="page-btn" class="btn btn-primary">More</button>
+         </div>
+         <script>
+            var gals=0;
+            function more(){
+               gals=gals+18;
+               var v = '/quotpage-'+gals.toString()
+               console.log(v)
+               fetch(v)
+               .then((res)=>{ return(res.json()) })
+               .then((res) =>{
+                  console.log(res.data,res.data.length)
+                  
+                  for( var i=0 ;i<res.data.length;i++){
+                     var d = document.getElementById("gallery-row")
+                     d.innerHTML = d.innerHTML +  `<div class="col-md-4 col-md mb-2"> <a class="venobox hover-effect d-block vbox-item" data-overlay="rgba(52,58,64,.6)" href="${res.data[i].image}"> <span class="hover-effect-container"> <span class="hover-effect-icon "> <span class=" fas fa-eye top-icon "></span> </span> </span> <div style="background-image:url('${res.data[i].image}');" class="gall gall-bg-img"> </div> </a> </div>`
+                  }
+                  if(res.data.length==0){
+                     document.getElementById('page-btn').innerHTML= "Bottom Reached"
+                     document.getElementById('page-btn').setAttribute('onclick',"")
+
+                  }
+               })
+                  
+            }
+         </script>
+         <footer class="footer bg-primary-2 o-hidden">
+            <div itemscope itemtype="http://schema.org/LocalBusiness" class="curved-decoration ">
+               <div class="decoration-top top-n1">
+                  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 800 43.2" enable-background="new 0 0 800 43.2;" xml:space="preserve">
+
+<path fill="#f3f5f8" d="M0,43.1v-4.8c0,0,187.9-30,400-3S800,0,800,0v43.1H0z"></path>
+<path fill="#f3f5f8" opacity="0.3" d="M0,43V18.7c0,0,131.8-13.9,269.2,20.9C407.2,60,600.3-13.9,800,27.8V43H0z"></path>
+</svg>
+               </div>
+            </div>
+            <div class="container spacer-one-bottom-lg1 spacer-xl-top1 pt-3 pb-3">
+               <!-- <div class="row text-center">
+                  <div class="col mb-6 mt-6 mt-lg-0">
+                     <img class=" max-width-9 opacity-3" src="assets/img/Logo.png" alt="Logo">
+                  </div>
+               </div> -->
+               <div class="row align-items-md-center">
+                  <div class="col-md-3 mb-2 mt-5 mb-md-0 text-center">
+                     <div class="col mb-6 mt-6 mt-lg-0">
+                        <img class=" max-width-9 opacity-3" src="assets/img/Logo.png" alt="Logo">
+                     </div>
+                  </div>
+                  <div class="col-md-3 text-center mb-3">
+                     To make people live a blissful enlightened life by resurrecting the conciousness in them
+                  </div>
+                  <div class="col-md-3 col-sm-6 mb-4 mb-sm-0">
+                     <div class="text-center">
+                        <address itemscope itemtype="http://schema.org/PostalAddress" itemprop="address">
+                           <div class="text-center">
+                              <p class="font-size-13  mb-0 text-light"><span itemprop="name" class="text-muted">Athmakalin Sangamam,
+                                 <br></span> <span itemprop="addressLocality">Kolli hills.</span>
+                              </p>
+                           </div>
+                        </address>
+                        <p class="font-size-13  mb-0 text-light"><span class="text-muted">
+                           <a href="tel:+919940953204"> <span itemprop="telephone" content="+919940953204">994 09 53204</span></a> , <a href="tel:+916374575616">637 45 75616</a>
+                        </p>
+                     </div>
+                     <!-- <form>
+                        <div class="input-group">
+                           <input type="email" class="form-control" name="email" placeholder="Your email address">
+                           <div class="input-group-append">
+                              <button type="submit" class="btn btn-block btn-primary">Subscribe</button>
+                           </div>
+                        </div>
+                     </form> -->
+                  </div>
+                  <div class="col-md-3 col-sm-6 text-center">
+                     <ul class="list-inline text-sm-right mb-0 font-size-14 mn-top">
+                        <li class="list-inline-item mr-1">
+                           <a class="btn btn-social btn-icon btn-social-dark" target="_blank" href="https://www.facebook.com/ஆத்மாக்களின்-சங்கமம்-The-Conflience-of-Souls-100309278331675">
+                           <span class="fab fa-facebook-f btn-icon-inner"></span>
+                           </a>
+                        </li>
+                        <li class="list-inline-item mr-1">
+                           <a class="btn btn-social btn-icon btn-social-dark" target="_blank" href="https://chat.whatsapp.com/Hk5u6uImjaJL8QV4nr0kMg">
+                           <span class="fab fa-whatsapp btn-icon-inner"></span>
+                           </a>
+                        </li>
+                        <li class="list-inline-item mr-1">
+                           <a class="btn btn-social btn-icon btn-social-dark" target="_blank" href="https://www.youtube.com/channel/UCVf4ERL515GI2d4QN1r27QQ">
+                           <span class="fab fa-youtube btn-icon-inner"></span>
+                           </a>
+                        </li><br><br>
+                        <li class="list-inline-item mr-1">
+                           <a class="btn btn-social btn-icon btn-social-dark" target="_blank" href="https://instagram.com/athmakalin_sangamam?igshid=yh2vmclhmpzs">
+                           <span class="fab fa-instagram btn-icon-inner"></span>
+                           </a>
+                        </li>
+                        <li class="list-inline-item mr-1">
+                           <a class="btn btn-social btn-icon btn-social-dark" target="_blank" href="https://www.twitter.com/athmakalinsang1">
+                           <span class="fab fa-twitter btn-icon-inner"></span>
+                           </a>
+                        </li>
+                        <li class="list-inline-item mx-0">
+                           <a class="btn btn-social btn-icon btn-social-dark" target="_blank" href="http://t.me/Athmakalin_Sangamam">
+                           <span class="fab fa-telegram btn-icon-inner"></span>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="row mt-2 justify-content-center ">
+                  <div class="col-lg-3 col-sm-5 text-center">
+                     <p class="font-size-11 text-muted mb-0">Designed by <a class="text-light" href="https://www.codestormx.in">Codestormx</a>
+                        
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </footer>
+         <a class="scroll-to-top  scroll active" href="#wrapper"><span class=" fas fa-arrow-up top-icon "></span></a>
+         <!-- End to the top -->
+      </div>
+      <!-- End wrapper-->
+      <!--Javascript-->
+      <script src="js/jquery-1.12.4.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/smooth-scroll.js"></script>
+      <script src="js/venobox.js"></script>
+      <script src="js/owl.carousel.js"></script>
+      <script src="js/jarallax.min.js"></script>
+      <script src="js/jarallax-element.min.js"></script>
+      <script src="js/placeholders.min.js"></script>
+      <script src="js/instafeed.min.js"></script>
+      <script src="js/script.js"></script>
+      <!-- Google analytics -->
+      <!-- End google analytics -->
+   </body>
+</html>
